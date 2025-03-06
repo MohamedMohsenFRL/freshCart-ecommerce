@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter, withInMemoryScrolling } from '@angular/router';
+import { provideRouter, withHashLocation, withInMemoryScrolling } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 import {
@@ -18,7 +18,7 @@ import { loaderInterceptor } from './core/interceptors/loader.interceptor';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes,withInMemoryScrolling({ scrollPositionRestoration: 'enabled' }),),
+    provideRouter(routes,withInMemoryScrolling({ scrollPositionRestoration: 'top' }),withHashLocation()),
     provideClientHydration(withEventReplay()),
     provideAnimations(),
     provideHttpClient(withFetch(),withInterceptors([authInterceptor,loaderInterceptor])),
