@@ -40,11 +40,6 @@ export class NavbarComponent implements OnInit {
         }
       }
     })
-    // this.cart.counter.subscribe({
-    //   next:(data) => {
-    //     this.counter = data
-    //   }
-    // })
   }
 
 }

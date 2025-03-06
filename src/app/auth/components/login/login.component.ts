@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { WishlistService } from '../../../core/services/wishlist/wishlist.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router,private wishList:WishlistService) {}
 
   isLoading: boolean = false;
   errorMsg: string = '';
@@ -36,6 +37,7 @@ export class LoginComponent {
         next: (res) => {
           this.isLoading = false;
           if (res.message == 'success') {
+            this.wishList.wishedId.set(JSON.parse(localStorage.getItem('wishlist') || '[]'))
             localStorage.setItem('token', res.token);
             this.authService.tokenDecode();
             this.router.navigate(['/home']);

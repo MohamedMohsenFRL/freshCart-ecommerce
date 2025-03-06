@@ -6,6 +6,7 @@ import { jwtDecode, JwtPayload } from 'jwt-decode';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { baseUrl } from '../../core/constants/baseUrl';
 import { Auth } from '../interfaces/auth';
+import { WishlistService } from '../../core/services/wishlist/wishlist.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     @Inject(PLATFORM_ID) id: object,
-    private router: Router
+    private router: Router,
+    private WishList:WishlistService
   ) {
     if (isPlatformBrowser(id)) {
       if (localStorage.getItem('token') !== null) {
@@ -47,6 +49,7 @@ export class AuthService {
   }
 
   logout() {
+    this.WishList.wishedId.set([]);
     localStorage.removeItem('token');
     this.userData.next(null);
     this.router.navigate(['/login']);
