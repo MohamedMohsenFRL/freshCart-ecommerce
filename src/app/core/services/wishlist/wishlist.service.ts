@@ -13,7 +13,9 @@ export class WishlistService {
 
   constructor(private http: HttpClient,@Inject(PLATFORM_ID) private id: object) {
     if (isPlatformBrowser(this.id)) {
-      this.wishedId.set(JSON.parse(localStorage.getItem('wishlist') || '[]'));
+      if(localStorage.getItem('token')) {
+        this.wishedId.set(JSON.parse(localStorage.getItem('wishlist') || '[]'));
+      }
     }
   }
 
