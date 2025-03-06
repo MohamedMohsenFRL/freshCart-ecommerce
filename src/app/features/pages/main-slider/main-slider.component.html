@@ -1,0 +1,20 @@
+<div class="grid grid-cols-12">
+  <div class="col-span-12 lg:col-span-8">
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide>
+        <img class="h-[500px] w-full object-cover object-right" src="/images/slider-image-1.jpeg" alt="slider 1">
+      </ng-template>
+      <ng-template carouselSlide>
+        <img class="h-[500px] w-full object-cover object-right" src="/images/slider-image-2.jpeg" alt="slider 2">
+      </ng-template>
+      <ng-template carouselSlide>
+        <img class="h-[500px] w-full object-cover object-right" src="/images/slider-image-3.jpeg" alt="slider 3">
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+  <div class=" lg:block hidden col-span-4">
+    <img class="h-[250px] object-cover object-right" src="/images/slider-2.jpeg" alt="grocery-banner">
+    <img class="h-[250px] object-cover object-right" src="/images/grocery-banner-2.jpeg" alt="grocery-banner 2">
+  </div>
+
+</div>

@@ -1,0 +1,133 @@
+<nav class="bg-gray-100 fixed top-0 w-full z-[9999]">
+  <div class="container mx-auto">
+    <div
+      class="flex flex-wrap items-center justify-between mx-auto p-4 px-3 md:px-8"
+    >
+      <a routerLink="/home">
+        <img src="images/freshcart-logo.svg" alt="" />
+      </a>
+      <button
+        data-collapse-toggle="navbar-default"
+        type="button"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+        aria-controls="navbar-default"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        <svg
+          class="w-5 h-5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 17 14"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15"
+          />
+        </svg>
+      </button>
+      <div
+        class="hidden w-full lg:flex lg:ms-6 flex-grow lg:w-auto justify-between"
+        id="navbar-default"
+      >
+        <ul
+          class="font-normal capitalize flex flex-col mt-4 rounded-lg lg:flex-row lg:space-x-1 rtl:space-x-reverse lg:mt-0"
+        >
+          <li>
+            <a
+              routerLink="/home"
+              routerLinkActive="bg-green-700 !text-white"
+              class="block py-2 px-2 text-gray-600 rounded-sm lg:hover:text-green-500 duration-150"
+              >home</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/products"
+              routerLinkActive="bg-green-700 !text-white"
+              class="block py-2 px-2 text-gray-600 rounded-sm lg:hover:text-green-500 duration-150"
+              >products</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/categories"
+              routerLinkActive="bg-green-700 !text-white"
+              class="block py-2 px-2 text-gray-600 rounded-sm lg:hover:text-green-500 duration-150"
+              >categories</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/brands"
+              routerLinkActive="bg-green-700 !text-white"
+              class="block py-2 px-2 text-gray-600 rounded-sm lg:hover:text-green-500 duration-150"
+              >brands</a
+            >
+          </li>
+          @if (isLogin) {
+          <li>
+            <a
+              routerLink="/wishlist"
+              routerLinkActive="bg-green-700 !text-white"
+              class="block py-2 px-2 text-gray-600 rounded-sm lg:hover:text-green-500 duration-150"
+              >Wishlist</a
+            >
+          </li>
+          }
+        </ul>
+        <ul
+          class="font-normal capitalize flex flex-col rounded-lg lg:flex-row lg:space-x-1 rtl:space-x-reverse lg:mt-0"
+        >
+          @if (isLogin) {
+          <li class="w-fit">
+            <a
+              routerLink="/cart"
+              routerLinkActive="!text-black"
+              class="block py-2 px-4 relative text-gray-600 text-xl rounded-sm lg:hover:text-green-700 duration-150"
+            >
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="sr-only">Notifications</span>
+              <div
+                class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-green-500 rounded-full -top-1 -end-0 "
+              >
+                {{counter()}}
+              </div>
+            </a>
+          </li>
+          } @if (!isLogin) {
+          <li>
+            <a
+              routerLink="/login"
+              routerLinkActive="bg-green-700 !text-white"
+              class="block py-2 px-2 text-gray-600 rounded-sm lg:hover:text-green-500 duration-150"
+              >login</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/register"
+              routerLinkActive="bg-green-700 !text-white"
+              class="block py-2 px-2 text-gray-600 rounded-sm lg:hover:text-green-500 duration-150"
+              >register</a
+            >
+          </li>
+          } @if (isLogin) {
+          <li>
+            <button
+              class="block py-2 px-2 text-gray-600 rounded-sm lg:hover:text-green-500 duration-150"
+              (click)="this.authService.logout()"
+            >
+              Logout
+            </button>
+          </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

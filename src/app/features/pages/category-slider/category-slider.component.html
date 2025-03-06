@@ -1,0 +1,16 @@
+<h2 class="mb-2 font-bold">Shop Popular Categories</h2>
+@if(categoreisList) {
+<owl-carousel-o [options]="customOptions">
+  @for (category of categoreisList.data; track $index) {
+  <ng-template carouselSlide [id]="category._id">
+    <img
+      class="h-[250px] object-cover object-center"
+      [src]="category.image"
+      [alt]="category.name"
+      [title]="category.slug"
+    />
+    <p>{{category.name}}</p>
+  </ng-template>
+  }
+</owl-carousel-o>
+}

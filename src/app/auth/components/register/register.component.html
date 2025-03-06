@@ -1,0 +1,353 @@
+<div class="container py-8 px-3 md:px-8 mx-auto">
+  <div class="w-full max-w-3xl mx-auto p-7 border shadow-sm rounded-md">
+    <h1 class="mb-4 font-bold text-2xl text-gray-800">Register</h1>
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onRegister()"
+      class="capitalize"
+    >
+      @if (errorMsg) {
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-100 " role="alert">
+          {{errorMsg}}
+        </div>
+      }
+      <!-- Name -->
+      <div class="relative mb-4">
+        <input
+          formControlName="name"
+          autocomplete="on"
+          type="text"
+          id="userName"
+          class="block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer"
+          placeholder=" "
+        />
+        <label
+          for="userName"
+          class="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+          >Name</label
+        >
+      </div>
+      @if (registerForm.get('name')?.touched &&
+      registerForm.get('name')?.errors) { @if
+      (registerForm.get('name')?.getError('required')) {
+      <div
+        class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <p>Name is required</p>
+        </div>
+      </div>
+      } @else if (registerForm.get('name')?.getError('minlength')) {
+      <div
+        class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <p>Name must be at least 3 characters</p>
+        </div>
+      </div>
+      } @else if (registerForm.get('name')?.getError('maxlength')) {
+      <div
+        class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <p>Name must be at most 20 characters</p>
+        </div>
+      </div>
+      } }
+      <!-- Email -->
+      <div class="relative mb-4">
+        <input
+          formControlName="email"
+          autocomplete="on"
+          type="email"
+          id="userEmail"
+          class="block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer"
+          placeholder=" "
+        />
+        <label
+          for="userEmail"
+          class="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+          >email</label
+        >
+      </div>
+      @if (registerForm.get('email')?.touched &&
+      registerForm.get('email')?.errors) { @if
+      (registerForm.get('email')?.getError('required')) {
+      <div
+        class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <p>email is required</p>
+        </div>
+      </div>
+      } @else if (registerForm.get('email')?.getError('email')) {
+      <div
+        class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <p>email is not valid</p>
+        </div>
+      </div>
+      } }
+      <!-- password -->
+      <div class="relative mb-4">
+        <input
+          formControlName="password"
+          autocomplete="off"
+          type="password"
+          id="userpassword"
+          class="block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer"
+          placeholder=" "
+        />
+        <label
+          for="userpassword"
+          class="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+          >password</label
+        >
+      </div>
+      @if (registerForm.get('password')?.touched &&
+      registerForm.get('password')?.errors) { @if
+      (registerForm.get('password')?.getError('required')) {
+      <div
+        class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <p>password is required</p>
+        </div>
+      </div>
+      } @else if (registerForm.get('password')?.getError('pattern')) {
+      <div
+        class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <p>password is not valid</p>
+        </div>
+      </div>
+      } }
+      <!-- rePassword -->
+      <div class="relative mb-4">
+        <input
+          formControlName="rePassword"
+          autocomplete="off"
+          type="password"
+          id="userrePassword"
+          class="block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer"
+          placeholder=" "
+        />
+        <label
+          for="userrePassword"
+          class="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+          >confirmPassword</label
+        >
+      </div>
+      @if (registerForm.get('rePassword')?.touched &&
+      registerForm.get('rePassword')?.errors) { @if
+      (registerForm.get('rePassword')?.getError('required')) {
+      <div
+        class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <p>confirmPassword is required</p>
+        </div>
+      </div>
+      } } @if (registerForm.get('rePassword')?.touched &&
+      registerForm.getError('missMatch')) {
+      <div
+        class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <p>confirmPassword is not valid</p>
+        </div>
+      </div>
+      }
+      <!-- phone -->
+      <div class="relative mb-4">
+        <input
+          formControlName="phone"
+          autocomplete="on"
+          type="tel"
+          id="userphone"
+          class="block px-2.5 pb-1.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer"
+          placeholder=" "
+        />
+        <label
+          for="userphone"
+          class="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-1 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-3 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+          >phone</label
+        >
+      </div>
+      @if (registerForm.get('phone')?.touched &&
+      registerForm.get('phone')?.errors) { @if
+      (registerForm.get('phone')?.getError('required')) {
+      <div
+        class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <p>phone is required</p>
+        </div>
+      </div>
+      } @else if (registerForm.get('phone')?.getError('pattern')) {
+      <div
+        class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50"
+        role="alert"
+      >
+        <svg
+          class="shrink-0 inline w-4 h-4 me-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+          />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+          <p>phone is not valid</p>
+        </div>
+      </div>
+      } }
+      <div class="w-fit ms-auto">
+        <button
+          type="submit"
+          class="focus:outline-none capitalize text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 duration-300 rounded-lg text-sm px-5 py-2.5"
+        >
+          @if (isLoading) {
+          <i class="fa-solid fa-spinner fa-spin"></i>
+          } register
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

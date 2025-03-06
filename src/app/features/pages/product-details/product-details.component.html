@@ -1,0 +1,70 @@
+<div class="container py-8 px-8 mx-auto">
+  @if(productDetails !== undefined) {
+  <section class="py-8 bg-white md:py-16 antialiased">
+    <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
+        <div class="flex-grow w-full">
+          <owl-carousel-o [options]="customOptions">
+            @for (item of productDetails.images; track $index) {
+              <ng-template carouselSlide>
+                <img class="h-[500px] w-full object-cover" [src]="item">
+              </ng-template>
+              }
+
+          </owl-carousel-o>
+        </div>
+        <div class="mt-6 sm:mt-8 lg:mt-0">
+          <h1 class="text-xl mb-3 font-semibold text-gray-900 sm:text-2xl">
+            {{ productDetails.title }}
+          </h1>
+          <h3 class="text-green-500">{{ productDetails.category.name }}</h3>
+          <div class="mt-4 sm:items-center sm:gap-4 sm:flex">
+            <p class="text-2xl font-extrabold text-gray-900 sm:text-3xl">
+              {{ productDetails.price | currency:"EGP " }}
+            </p>
+
+            <div class="flex items-center gap-2 mt-2 sm:mt-0">
+              <p class="text-sm font-medium leading-none text-gray-500">
+                ({{productDetails.ratingsAverage}})
+              </p>
+              <a
+                class="text-sm font-medium leading-none text-gray-900 underline hover:no-underline"
+              >
+                {{productDetails.ratingsQuantity}} Reviews
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-6 sm:gap-4 sm:items-center sm:flex sm:mt-8">
+            <button
+            (click)="addProduct(productDetails.id)"
+              title=""
+              class="text-white mt-4 sm:mt-0 duration-300 bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none flex items-center justify-center"
+              role="button"
+            >
+            <i class="fa-solid fa-cart-plus me-2"></i>
+
+              Add to cart
+            </button>
+            <button
+
+            (click)="addToWishlist(productDetails.id)"
+              class="flex items-center justify-center py-1.5 px-3 text-sm duration-300 text-gray-900 focus:outline-none bg-white rounded-lg hover:bg-gray-100 hover:text-red-600 focus:z-10 focus:ring-4 focus:ring-gray-100"
+              role="button"
+            >
+            <i [class]="checkWished(productDetails.id)?'text-red-600':'text-gray-900'" class="fa-solid fa-heart text-xl"></i>
+
+            </button>
+          </div>
+
+          <hr class="my-6 md:my-8 border-gray-200" />
+
+          <p class="mb-6 text-gray-500">
+            {{ productDetails.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+</div>

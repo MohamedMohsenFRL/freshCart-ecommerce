@@ -1,0 +1,57 @@
+<div class="container py-8 px-8 mx-auto">
+  @if (wishedList) {
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+        <tr class="text-center">
+          <th scope="col" class="px-16 py-3">
+            <span class="sr-only">Image</span>
+          </th>
+          <th scope="col" class="px-6 py-3">Product</th>
+          <th scope="col" class="px-6 py-3">Qntity</th>
+          <th scope="col" class="px-6 py-3">Price</th>
+          <th scope="col" class="px-6 py-3">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of wishedList; track $index) {
+        <tr class="bg-white border-b border-gray-200 hover:bg-gray-50">
+          <td class="p-4 text-center">
+            <img
+              [src]="item.imageCover"
+              class="w-16 md:w-32 max-w-full max-h-full"
+              [alt]="item.title"
+            />
+          </td>
+          <td class="px-6 py-4 font-semibold text-center text-gray-900">
+            {{ item.title }}
+          </td>
+          <td class="px-6 py-4 font-semibold text-center text-gray-900">
+            {{ item.quantity }}
+          </td>
+          <td class="px-6 py-4 text-center font-semibold text-gray-900">
+            {{ item.price | currency : "EGP " }}
+          </td>
+          <td class="px-6 py-4 text-center">
+            <button
+              (click)="removeFromWishlist(item._id)"
+              class="focus:outline-none block w-fit mx-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 cursor-pointer duration-300 mb-2 capitalize"
+            >
+              Remove
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  } @else {
+  <p class="mt-6 text-xl">Your wishlist is currently empty</p>
+  <a
+    routerLink="/home"
+    class="focus:outline-none mt-4 inline-flex text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 capitalize"
+  >
+    go back to home
+  </a>
+  }
+</div>

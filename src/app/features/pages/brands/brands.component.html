@@ -1,0 +1,17 @@
+<div class="container py-8 px-3 md:px-8 mx-auto">
+  <h1 class="text-center text-green-600 text-4xl font-bold mb-12">
+    Brands
+  </h1>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+    @if(brandsList) {
+      @for (brand of brandsList.data; track $index) {
+        <div class=" bg-white border border-gray-200 hover:shadow-lg hover:shadow-gray-200 cursor-pointer duration-300 rounded-lg shadow-sm">
+          <a >
+            <img class="rounded-t-lg mx-auto" [src]="brand.image" [alt]="brand.name" />
+          </a>
+          <h2 class="text-center mb-4 font-semibold">{{brand.name}}</h2>
+        </div>
+      }
+    }
+  </div>
+</div>
