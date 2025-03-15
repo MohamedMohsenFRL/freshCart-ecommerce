@@ -1,19 +1,9 @@
 import { Routes } from '@angular/router';
-import { AuthLayoutComponent } from './core/layout/auth-layout/auth-layout.component';
-import { MainLayoutComponent } from './core/layout/main-layout/main-layout.component';
 import { NotFoundComponent } from './core/components/not-found/not-found.component';
-import { LoginComponent } from './auth/components/login/login.component';
-import { RegisterComponent } from './auth/components/register/register.component';
-import { ForgetPasswordComponent } from './auth/components/forget-password/forget-password.component';
-import { CategoriesComponent } from './features/pages/categories/categories.component';
-import { BrandsComponent } from './features/pages/brands/brands.component';
-import { ProductDetailsComponent } from './features/pages/product-details/product-details.component';
-import { CartComponent } from './features/pages/cart/cart.component';
-import { WishlistComponent } from './features/pages/wishlist/wishlist.component';
 import { loginGuard } from './core/guards/login/login.guard';
 import { notLoginGuard } from './core/guards/notLogin/not-login.guard';
-import { CheckoutComponent } from './features/pages/order/checkout/checkout.component';
-import { AllordersComponent } from './features/pages/order/allorders/allorders.component';
+import { AuthLayoutComponent } from './core/layout/auth-layout/auth-layout.component';
+import { MainLayoutComponent } from './core/layout/main-layout/main-layout.component';
 
 export const routes: Routes = [
   {path:"",component:MainLayoutComponent,children:[

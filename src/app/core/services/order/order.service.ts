@@ -12,7 +12,7 @@ export class OrderService {
 
   cartCheckout(cartId: string, shipData: {}): Observable<any> {
     return this.http.post(
-      `${baseUrl}/api/v1/orders/checkout-session/${cartId}?url=https://fresh-cart-seven-eta.vercel.app`,
+      `${baseUrl}/api/v1/orders/checkout-session/${cartId}?url=https://fresh-cart-seven-eta.vercel.app/%23#/`,
       {
         shippingAddress: shipData,
       }
